@@ -11,11 +11,14 @@ import NewEvent from "./components/Events/NewEvent.jsx";
 import EditEvent from "./components/Events/EditEvent.jsx";
 
 const router = createBrowserRouter([
+  
   {
     path: "/",
     element: <Navigate to="/events" />,
   },
+  
   {
+    
     path: "/events",
     element: <Events />,
 
@@ -43,7 +46,9 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} future={{
+    v7_startTransition: true,
+  }}/>
     </QueryClientProvider>
   );
 }
