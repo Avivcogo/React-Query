@@ -27,7 +27,7 @@ export default function EventDetails() {
     mutationFn: deleteEvent,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["events"],
+        queryKey : ["events"],
         refetchType: "none",
       });
       navigate("/events");
@@ -95,7 +95,7 @@ export default function EventDetails() {
                 {formattedDate} @ {data.time}
               </time>
             </div>
-            <p id="event-details-description">{data.discription}</p>
+            <p id="event-details-description">{data.description}</p>
           </div>
         </div>
       </>
