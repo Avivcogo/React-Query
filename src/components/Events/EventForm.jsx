@@ -8,9 +8,9 @@ import ErrorBlock from "../UI/ErrorBlock.jsx";
 export default function EventForm({ inputData, onSubmit, children }) {
   const [selectedImage, setSelectedImage] = useState(inputData?.image);
 
-  const { data, isPending, isError } = useQuery({
-    queryFn: fetchSelectableImages,
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["events-images"],
+    queryFn: fetchSelectableImages,
   });
 
   function handleSelectImage(image) {
@@ -28,7 +28,7 @@ export default function EventForm({ inputData, onSubmit, children }) {
 
   return (
     <form id="event-form" onSubmit={handleSubmit}>
-      <p className="control">
+      <div className="control">
         <label htmlFor="title">Title</label>
         <input
           type="text"
@@ -36,9 +36,9 @@ export default function EventForm({ inputData, onSubmit, children }) {
           name="title"
           defaultValue={inputData?.title ?? ""}
         />
-      </p>
+      </div>
 
-      {isPending && <p>Loading selectable images...</p>}
+      {isLoading && <p>Loading selectable images...</p>}
       {isError && (
         <ErrorBlock
           title="Failed to load selectable images"
@@ -55,17 +55,17 @@ export default function EventForm({ inputData, onSubmit, children }) {
         </div>
       )}
 
-      <p className="control">
+      <div className="control">
         <label htmlFor="description">Description</label>
         <textarea
           id="description"
           name="description"
           defaultValue={inputData?.description ?? ""}
         />
-      </p>
+      </div>
 
       <div className="controls-row">
-        <p className="control">
+        <div className="control">
           <label htmlFor="date">Date</label>
           <input
             type="date"
@@ -73,9 +73,9 @@ export default function EventForm({ inputData, onSubmit, children }) {
             name="date"
             defaultValue={inputData?.date ?? ""}
           />
-        </p>
+        </div>
 
-        <p className="control">
+        <div className="control">
           <label htmlFor="time">Time</label>
           <input
             type="time"
@@ -83,10 +83,10 @@ export default function EventForm({ inputData, onSubmit, children }) {
             name="time"
             defaultValue={inputData?.time ?? ""}
           />
-        </p>
+        </div>
       </div>
 
-      <p className="control">
+      <div className="control">
         <label htmlFor="location">Location</label>
         <input
           type="text"
@@ -94,9 +94,9 @@ export default function EventForm({ inputData, onSubmit, children }) {
           name="location"
           defaultValue={inputData?.location ?? ""}
         />
-      </p>
+      </div>
 
-      <p className="form-actions">{children}</p>
+      <div className="form-actions">{children}</div>
     </form>
   );
 }

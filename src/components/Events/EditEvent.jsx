@@ -108,7 +108,7 @@ export function loader({ params }) {
 export async function action({ request, params }) {
   const formData = await request.formData();
   const updatedEventData = Object.fromEntries(formData);
-  await updateEvent({ id: params.is, event: updatedEventData });
+  await updateEvent({ id: params.id, event: updatedEventData });
   await queryClient.invalidateQueries(["events"]);
   return redirect("../");
 }

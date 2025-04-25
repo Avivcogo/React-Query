@@ -14,7 +14,7 @@ export default function EventDetails() {
   const navigate = useNavigate();
 
   const { data, isPending, isError, error } = useQuery({
-    querykey: ["events", params.id],
+    queryKey: ["events", params.id],
     queryFn: ({ signal }) => fetchEvent({ signal, id: params.id }),
   });
 
